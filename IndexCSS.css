@@ -1,0 +1,191 @@
+
+
+/*left nav bar*/
+.leftnav{
+    margin-left: -25px !important;
+    margin-bottom: -5px;
+    font-size: 14px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.leftnav a{
+    color: #262626;
+    text-decoration: none;
+}
+
+.leftnav a:hover{
+    text-decoration: underline;
+    color:#262626;
+
+}
+
+.microsoft{
+    width: 100px;
+    margin-top: -2px;
+}
+
+.dropdowntext{
+    background-color: none;
+    font-size: 10px;
+    color: #262626;
+}
+
+.disable{
+    margin-top: -2px;
+    color:#262626;
+}
+
+.leftnav a:hover {
+    text-decoration: underline 2px;
+  }
+  
+.leftnav a:active {
+    text-decoration: underline 2px;
+  }
+
+.leftnav a:hover {
+    text-decoration: underline 2px;
+    color: black;
+}
+
+.dropdown-toggle{
+    border-radius: 0px !important;
+    border-style: dotted !important;
+    border: 1px !important;
+}
+
+/*rigth nav bar */
+
+.rightnav{
+    padding-left: 50px;
+    font-size: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.rightnav a{
+    color: #262626;
+    text-decoration: none;
+}
+
+.rightnav a:hover{
+    text-decoration: underline;
+    color:#262626;
+
+}
+
+.rightnav a:hover {
+    text-decoration: underline 2px;
+  }
+  
+.rightnav a:active {
+    text-decoration: underline 2px;
+  }
+
+.rightnav a:hover {
+    text-decoration: underline 2px;
+    color: black;
+}
+
+#AllMic{
+    margin-top: 2px;
+}
+
+/*carousel control*/
+
+.carousel-control-prev, .carousel-control-next{
+    position: absolute !important;
+    border-radius: 50px !important;
+    background-color: #262626 !important;
+    top: 50% !important;
+    width: 40px !important;
+    height: 40px !important;
+} 
+
+
+/*carousel caption*/
+
+.carousel-caption button{
+    border: 0px !important;
+}
+
+.carousel-caption button:hover{
+    text-decoration:underline !important;
+} 
+
+.secondslide {
+    transform: translateY(-50%);
+    bottom: initial;
+    top: 50%;
+    right:  75%;
+    margin-left: -50px ;
+    margin-right: -250px ;
+    padding-right: -100px ;
+    text-align: left ;
+}
+
+.firstslide{
+    transform: translateY(-50%);
+    bottom: initial;
+    top: 50%;
+    left:  75%;
+    margin-left: -350px ;
+    margin-right: -200px ;
+    padding-left: 100px ;
+    text-align: left ;
+}
+
+.thirdslide{
+    transform: translateY(-50%);
+    bottom: initial;
+    top: 50%;
+    left:  75%;
+    margin-left: -200px ;
+    margin-right: -200px ;
+    padding-left: 100px ;
+    text-align: left ;
+}
+
+/*SVG CONTENT*/
+
+.svg-container a{
+    color: #107c10;
+    text-decoration: none;
+}
+
+/*.svg-container a:hover{
+    text-decoration: ;
+}*/
+
+.svg-container p{
+    text-align: center;
+}
+
+.svg-container img{
+    width: 80px;
+    max-width: 100%;
+}
+
+.svg-container{
+padding: 15px 0px 35px;
+}
+
+.svg-position{
+    margin: 0px 300px 0px 300px;
+}
+
+
+.icons a:focus {
+    outline: 2px dashed;
+}
+
+.icons a p {
+    color: #107c10;
+    border-bottom: 3px solid transparent;
+    transition: border-color .2s ease-in-out;
+    -webkit-transition: border-color .2s ease-in-out;
+    -moz-transition: border-color .2s ease-in-out;
+}
+
+.icons a:hover p {
+    border-bottom: 3px solid #107c10;
+}
