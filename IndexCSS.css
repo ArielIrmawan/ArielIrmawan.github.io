@@ -361,3 +361,8 @@ padding: 15px 0px 0px;
      font-weight: bolder;
 }
 
+.card-besar{
+
+    z-index: 99999 !important;
+
+}

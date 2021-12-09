@@ -347,6 +347,11 @@ padding: 15px 0px 0px;
     padding-right: 65% !important;
 }
 
+.card-besar{
+
+    z-index: 9 !important;
+
+}
 
 
 /*footoer*/
