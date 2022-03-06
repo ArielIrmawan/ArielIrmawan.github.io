@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabel Pemeriksan Fisik</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+      <div class="container"> <!-- Brand -->
+        <a class="navbar-brand" href="#">Tabel Data Pemeriksaan Fisik</a>
+    
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+            <a class="nav-link" href="/CRUD/TabelKunjungan.html">Data Kunjungan Pasien</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/CRUD/TabelDataPasien.html">Data pasien</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/CRUD/TabelDataAnak.html">Data anak</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/CRUD/Index.html" style="float: right;">Back to Home</a>
+          </li>
+        </ul>
+        </div>
+      </div> 
+      </nav>
+
+    <div id="app">
+
+        <div class="container">
+            <div class="py-5 text-center">
+              <h2>Tabel Pemeriksan Fisik pasien</h2>
+              <p class="lead">masukan data hasil pemeriksaan Fisik pasien</p>
+            </div>
+      
+              <div class="col-md-12">
+                <h4 class="mb-3">Data pemeriksaan fisik pasien<button class="btn btn-md btn-primary" v-on:click="resetForm()">Buat Data pemeriksaan fisik baru </button>
+                </h4>
+                <table class="table table-striped text-center">
+                    <tr>
+                      <th>ID pasien bersalin</th>
+                      <th>ID Pasien</th>
+                      <th>Tgl Pemeriksan</th>
+                      <th>Anak ke</th>
+                      <th>tekanan darah</th>
+                      <th>Tinggi badan</th>
+                      <th>lingkar perut</th>
+                      <th>tinggi fundus uteri</th>
+                      <th>heart rate</th>
+                      <th>respiratory rate</th>
+                      <th>umur kehamilan</th>
+                      <th>berat badan</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                    </tr>
+                    <tr v-for="user in pasiens" class="text-center">
+                        <td>{{ user.id_pasien_bersalin }}</td>
+                        <td>{{ user.id_pasien }}</td>
+                        <td>{{ user.tgl_pemeriksaan }}</td>
+                        <td>{{ user.anakke }}</td>
+                        <td>{{ user.tekanandarah }}</td>
+                        <td>{{ user.tinggibadan }}</td>
+                        <td>{{ user.lingkarperut }}</td>
+                        <td>{{ user.tinggifundusuteri }}</td>
+                        <td>{{ user.heartrate }}</td>
+                        <td>{{ user.respiratoryrate }}</td>
+                        <td>{{ user.umurkehamilan }}</td>
+                        <td>{{ user.beratbadan }}</td>
+                        <td><button class="btn btn-md btn-warning" v-on:click="getEdit(user)">Edit</button></td>
+                        <td><button class="btn btn-danger" v-on:click="getDelete(user)">Delete</button></td>
+                    </li>
+                </table>
+
+              <!--form input-->
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="tgl_pemeriksaan">tanggal pemeriksaan</label>
+                  <input  v-model="tgl_pemeriksaan" type="date" class="form-control" id="tgl_pemeriksaan" placeholder="" value="" required>
+                  <div class="invalid-feedback">
+                    Mohon isi tanggal pemeriksaan terlebih dahulu
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <label for="anakke">anak ke</label>
+                  <input v-model="anakke" type="number" class="form-control" id="anakke" placeholder="" value="" required>
+                  <div class="invalid-feedback">
+                    lahiran anak ke-
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="tekanandarah">Tekanan Darah</label>
+                  <input  v-model="tekanandarah" type="number" class="form-control" id="tekanandarah" placeholder="tekanan darah pasien" value="" required>
+                  <div class="invalid-feedback">
+                    isi tekanan darah pasien
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <label for="tinggibadan">Masukan tinggi badan</label>
+                  <input v-model="tinggibadan" type="number" class="form-control" id="tinggibadan" placeholder="tinggi badan pasien" value="" required>
+                  <div class="invalid-feedback">
+                    masukan tinggi badan pasien
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="lingkarperut">lingkar perut</label>
+                  <input  v-model="lingkarperut" type="number" class="form-control" id="lingkarperut" placeholder="masukan lingkar perut pasien" value="" required>
+                  <div class="invalid-feedback">
+                    masukan lingkar perut pasien
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <label for="tinggifundusuteri">Masukan tinggi fundusuteri</label>
+                  <input v-model="tinggifundusuteri" type="number" class="form-control" id="tinggifundusuteri" placeholder="" value="" required>
+                  <div class="invalid-feedback">
+                    masukan tinggi fundus uteri pasien
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="heartrate">heart rate</label>
+                  <input  v-model="heartrate" type="number" class="form-control" id="heartrate" placeholder="" value="" required>
+                  <div class="invalid-feedback">
+                    Mohon isi heart rate pasien
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <label for="respiratoryrate">Masukan tanggal kunjungan</label>
+                  <input v-model="respiratoryrate" type="number" class="form-control" id="respiratoryrate" placeholder="" value="" required>
+                  <div class="invalid-feedback">
+                    masukan respiratory rate pasien
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="umurkehamilan">Umur kehamilan</label>
+                  <input  v-model="umurkehamilan" type="number" class="form-control" id="umurkehamilan" placeholder="" value="" required>
+                  <div class="invalid-feedback">
+                    masukan umur kehamilan ibu
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <label for="beratbadan">Masukan berat badan</label>
+                  <input v-model="beratbadan" type="number" class="form-control" id="beratbadan" placeholder="" value="" required>
+                  <div class="invalid-feedback">
+                    masukan berat badan pasien
+                  </div>
+                </div>
+              </div>
+
+              <hr class="mb-4">
+                  <button v-if="!editMode && !deleteMode" v-on:click="createUser" class="btn btn-primary btn-lg btn-block" type="submit">Masukan Data</button>
+                  <button v-if="editMode" v-on:click="updateUser" class="btn btn-warning btn-lg btn-block" type="submit">Perbarui Data</button>
+                  <button v-if="deleteMode" v-on:click="deleteUser" class="btn btn-danger btn-lg btn-block" type="submit">Hapus Data</button>
+          
+
+    <!-- Axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        var app = new Vue ({
+            el: '#app',
+            data: {
+                errors: [],
+                message: null,
+                pasiens:[],
+                userIdEdit: null,
+                userIdDelete: null,
+                editMode: false,
+                deleteMode: false,
+                id_pasien_bersalin:'',
+                id_pasien:'',
+                tgl_pemeriksaan:'',
+                anakke:'',
+                tekanandarah:'',
+                tinggibadan:'',
+                lingkarperut:'',
+                tinggifundusuteri:'',
+                heartrate:'',
+                respiratoryrate:'',
+                umurkehamilan:'',
+                beratbadan:''
+            },
+            mounted: function() {
+                this.getUser();
+            },
+            methods: {
+                getUser() {
+                    axios.get('https://621f200f311a705914012502.mockapi.io/Tabel_Pemeriksaan_Fisik')
+                        .then(response => {
+                            this.pasiens = response.data;
+                            console.log(response);
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
+                },
+                createUser: function(){
+                    axios.post('https://621f200f311a705914012502.mockapi.io/Tabel_Pemeriksaan_Fisik', {
+                            id_pasien : this.id_pasien,
+                            tgl_pemeriksaan : this.tgl_pemeriksaan,
+                            anakke : this.anakke,
+                            tekanandarah : this.tekanandarah,
+                            tinggibadan : this.tinggibadan,
+                            lingkarperut : this.lingkarperut,
+                            tinggifundusuteri : this.tinggifundusuteri,
+                            heartrate : this.heartrate,
+                            respiratoryrate : this.respiratoryrate,
+                            umurkehamilan : this.umurkehamilan,
+                            beratbadan : this.beratbadan
+                    })
+                    .then(response => {
+                            this.getUser();
+                            this.message = "Your data has been submitted";
+                            console.log(response);
+                    })
+                    .catch(error => {
+                            console.log(error);
+                    });
+                },
+                resetForm: function () {
+                    this.message = null;
+                    this.editMode = false;
+                    this.deleteMode = false;
+                    this.userIdEdit = null;
+                    this.id_pasien = null;
+                    this.tgl_pemeriksaan = null;
+                    this.anakke = null;
+                    this.tekanandarah = null;
+                    this.tinggibadan = null;
+                    this.lingkarperut = null;
+                    this.tinggifundusuteri = null;
+                    this.heartrate = null;
+                    this.respiratoryrate = null;
+                    this.umurkehamilan = null;
+                    this.beratbadan = null;
+                },
+                getEdit: function (pasien) {
+                    this.message = null;
+                    this.editMode = true;
+                    this.deleteMode = false;
+                    this.userIdEdit = pasien.id_pasien_bersalin;
+                    this.id_pasien = id_pasien;
+                    this.tgl_pemeriksaan = tgl_pemeriksaan;
+                    this.anakke = anakke;
+                    this.tekanandarah = tekanandarah;
+                    this.tinggibadan = tinggibadan;
+                    this.lingkarperut = lingkarperut;
+                    this.tinggifundusuteri = tinggifundusuteri;
+                    this.heartrate = heartrate;
+                    this.respiratoryrate = respiratoryrate;
+                    this.umurkehamilan = umurkehamilan;
+                    this.beratbadan = beratbadan;
+                },
+                getDelete: function (pasien) {
+                    this.message = null;
+                    this.deleteMode = true;
+                    this.editMode = false;
+                    this.userIdDelete = pasien.id_pasien_bersalin;
+                    this.id_pasien = id_pasien;
+                    this.tgl_pemeriksaan = tgl_pemeriksaan;
+                    this.anakke = anakke;
+                    this.tekanandarah = tekanandarah;
+                    this.tinggibadan = tinggibadan;
+                    this.lingkarperut = lingkarperut;
+                    this.tinggifundusuteri = tinggifundusuteri;
+                    this.heartrate = heartrate;
+                    this.respiratoryrate = respiratoryrate;
+                    this.umurkehamilan = umurkehamilan;
+                    this.beratbadan = beratbadan;
+                },
+                updateUser: function () {
+                    axios.put(`https://621f200f311a705914012502.mockapi.io/Tabel_Pemeriksaan_Fisik/${this.userIdEdit}`, {
+                            id_pasien : this.id_pasien,
+                            tgl_pemeriksaan : this.tgl_pemeriksaan,
+                            anakke : this.anakke,
+                            tekanandarah : this.tekanandarah,
+                            tinggibadan : this.tinggibadan,
+                            lingkarperut : this.lingkarperut,
+                            tinggifundusuteri : this.tinggifundusuteri,
+                            heartrate : this.heartrate,
+                            respiratoryrate : this.respiratoryrate,
+                            umurkehamilan : this.umurkehamilan,
+                            beratbadan : this.beratbadan
+                        })
+                        .then(res => {
+                            // handle success
+                            this.message = "Your data has been updated";
+                            this.getUser();
+                        })
+                        .catch(err => {
+                            // handle error
+                            console.log(err);
+                        })
+                },
+                // Delete User
+                deleteUser: function () {
+                    axios.delete(`https://621f200f311a705914012502.mockapi.io/Tabel_Pemeriksaan_Fisik/${this.userIdDelete}`)
+                        .then(res => {
+                            // handle success
+                            this.message = "Your data has been deleted";
+                            this.getUser();
+                        })
+                        .catch(err => {
+                            // handle error
+                            console.log(err);
+                        })
+                }
+                
+
+                
+            }
+        })
+        
+    </script>
+
+
+</body>
+</html>
